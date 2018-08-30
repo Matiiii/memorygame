@@ -1,54 +1,85 @@
 var controller = function () {
     var startGame = function () {
-        var initialNumberOfPieces = view.getInitialNumberOfPieces(),
-        numberOfPossibleFalseClicks = view.getNumberOfPossibleFalseClicks();
+            var initialNumberOfPieces = view.getInitialNumberOfPieces(),
+                numberOfPossibleFalseClicks = view.getNumberOfPossibleFalseClicks(),
+                delay = view.getDelay(),
+                pieces;
 
+
+            view.resetPieces();
+            console.log('Start Game! ................................................');
+            game.startGame({
+                numberOfPieces: initialNumberOfPieces,
+                numberOfPossibleFalseClicks: numberOfPossibleFalseClicks,
+                delay: delay
+
+            });
+            pieces = game.getPieces();
+            view.renderPieces(pieces);
+            view.viewPiecesToGuess(delay, game.findPiecesToGuess(pieces));
+
+
+        },
+        startNextLevel = function () {
+            var numberOfPiecesInThisLevel = parseInt(game.getCurrentNumberOfPieces(),10)+1,
+                numberOfPossibleFalseClicks = game.getNumberOfPossibleFalseClicks(),
+                delay = game.getDelay(),
+                pieces;
+
+            view.resetPieces();
+            console.log('New Level! ................................................');
+            game.startGame({
+                numberOfPieces: numberOfPiecesInThisLevel,
+                numberOfPossibleFalseClicks: numberOfPossibleFalseClicks,
+                delay: delay
+            });
+
+            pieces = game.getPieces();
+            view.renderPieces(pieces);
+            view.viewPiecesToGuess(delay, game.findPiecesToGuess(pieces));
+
+
+        },
+        resetView = function(){
         view.resetPieces();
+        },
 
-        game.startGame({
-            numberOfPieces: initialNumberOfPieces,
-            numberOfPossibleFalseClicks: numberOfPossibleFalseClicks
+        restartLevel = function () {
+            var numberOfPiecesInThisLevel = game.getCurrentNumberOfPieces(),
+                delay = game.getDelay(),
+            pieces;
 
-        });
+            view.resetPieces();
 
-        view.renderPieces(game.getPieces());
+            game.startGame({
+                numberOfPieces: numberOfPiecesInThisLevel
+            });
 
+            pieces = game.getPieces();
+            view.renderPieces(pieces);
+            view.viewPiecesToGuess(delay, game.findPiecesToGuess(pieces));
 
-    },
-    startNextLevel = function () {
-        var numberOfPiecesInThisLevel = game.currentNumberOfPieces + 5;
+        },
+        checkClick = function (id) {
+            if (game.checkClick(id) === true) {
+                view.setColorPieceGreen(id);
+            } else {
+                view.setColorPieceRed(id)
+            }
 
-        view.resetPieces();
-        game.startGame({
-            numberOfPieces: numberOfPiecesInThisLevel
-        });
+        },
+        disableClicks = function () {
+        var delay = view.getDelay();
+        view.addNonClickStyleToDocument(delay);
 
-        view.renderPieces(game.getPieces());
-
-    },
-    restartLevel = function () {
-        var numberOfPiecesInThisLevel = game.currentNumberOfPieces;
-
-        view.resetPieces();
-        game.startGame({
-            numberOfPieces: numberOfPiecesInThisLevel
-        });
-
-        view.renderPieces(game.getPieces());
-
-    },
-     checkClick = function (id) {
-         if(game.checkClick(id) === true){
-            return console.log(id.toString()+true);
-         }else{
-             return  console.log(id.toString()+false);
-         }
-
-     };
+        };
     return {
         'startGame': startGame,
         'startNextLevel': startNextLevel,
-        'restartLevel':restartLevel,
-        'checkClick':checkClick
+        'restartLevel': restartLevel,
+        'checkClick': checkClick,
+        'resetView': resetView,
+        'gameOver':restartLevel,
+        'disableClicks':disableClicks
     }
 }();

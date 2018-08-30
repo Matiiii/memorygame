@@ -5,28 +5,29 @@
     <title>Title</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <style>
-        input[type=range] {
-            display: block;
-            width: 100%;
-        }
-    </style>
+
 </head>
 <body>
+<style id="styleBox">
+</style>
 <h1>Memory Game!</h1>
 
 
     <span>
-<form oninput="wynik.value=inputPieces.value, wynik2.value=inputFalseClicks.value">
+<form oninput="wynik.value=inputPieces.value, wynik2.value=inputFalseClicks.value, wynik3.value=inputDelay.value">
 
     <p>Set pieces 4-50 :  <output name="wynik" for="pieces "></output></p>
     <input type="range" id="inputPieces" name="whatever" value="4" min="4" max="50">
-    <p>Set possible false 0-1 :  <output name="wynik2" for="pieces "></output></p>
+    <p>Set possible false 0-10 :  <output name="wynik2" for="pieces "></output></p>
     <input type="range" id="inputFalseClicks" name="whatever" value="0" min="0" max="10">
+    <p>Set delay 0-1 :  <output name="wynik3" for="pieces "></output></p>
+    <input type="range" id="inputDelay" name="wtf" value="0.5" step="0.1" min="0.5" max="3.0">
 
 </form>
 
 <button onclick="controller.startGame()">Start</button>
+        <button onclick="controller.resetView()">ResetView</button>
+        <button onclick="controller.disableClicks()">disable Clicks</button>
         </span>
     <span>
         <div class="result" id="pieces"></div>

@@ -1,4 +1,4 @@
-Piece = function (number){
+Piece = function (number) {
     this.toGuess = false;
     this.pieceNumber = number;
 };
@@ -9,17 +9,28 @@ var game = (function () {
         totalNumberOfClicks = 0,
         numberOfFalseClicks = 0,
         numberOfPossibleFalseClicks = 0,
+        delay,
         initialNumberOfPieces = 4,
         currentNumberOfPieces,
-        numberOfPiecesToGuess,
+        numberOfPiecesToGuess = 0,
+        currentLevel,
         currentPieces,
-        level,
+        level = 0,
         startGame = function (config) {
             if (config && config.numberOfPieces) {
                 currentNumberOfPieces = config.numberOfPieces;
-                numberOfPossibleFalseClicks = config.numberOfPossibleFalseClicks;
+                console.log('currentNumberOfPieces : ' + currentNumberOfPieces);
             } else {
                 currentNumberOfPieces = initialNumberOfPieces;
+                console.log('currentNumberOfPieces : ' + currentNumberOfPieces);
+            }
+            if ((config && config.numberOfPossibleFalseClicks)) {
+                numberOfPossibleFalseClicks = config.numberOfPossibleFalseClicks;
+                console.log('numberOfPossibleFalseClicks : ' + numberOfPossibleFalseClicks);
+            }
+            if (config && config.delay) {
+                delay = config.delay;
+                console.log('delay : ' + delay);
             }
 
         },
@@ -28,7 +39,8 @@ var game = (function () {
                 pieces = [],
                 numbToEnd;
 
-            numberOfPiecesToGuess = getNumberOfPiecesToGuess();
+
+            getNumberOfPiecesToGuess();
             numbToEnd = numberOfPiecesToGuess;
             for (i = 0; i < currentNumberOfPieces; i++) {
                 pieces.push(new Piece(i));
@@ -48,35 +60,84 @@ var game = (function () {
 
     function checkClick(index) {
         totalNumberOfClicks++;
+        console.log('totalNumberOfClicks : ' + totalNumberOfClicks);
         if (currentPieces[index].toGuess == true) {
             currentPieces[index].toGuess = false;
             numberOfPiecesToGuess--;
+            console.log('numberOfPiecesToGuess : ' + numberOfPiecesToGuess);
+            isEndOfLevel();
             return true;
+        } else {
+            numberOfPossibleFalseClicks--;
+            console.log('numberOfPossibleFalseClicks : ' + numberOfPossibleFalseClicks);
+            numberOfFalseClicks++;
+            console.log('numberOfFalseClicks : ' + numberOfFalseClicks);
+            isEndOfLevel();
+            return false;
         }
-        numberOfFalseClicks++;
-        return false;
+
     }
 
     function isEndOfLevel() {
         if (numberOfPiecesToGuess === 0) {
             level++;
-            controller.startNextLevel();
+            setTimeout(function () {
+                controller.startNextLevel()
+            }, 500);
+
+
+        }
+        if (numberOfPossibleFalseClicks < 0) {
+            console.log('............................GAME OVER..............................');
+            setTimeout(function () {
+                controller.startGame()
+            }, 500);
         }
     }
 
     function getNumberOfPiecesToGuess() {
         numberOfPiecesToGuess = Math.floor(currentNumberOfPieces / 2) - 1;
-        return numberOfPiecesToGuess;
+
     }
 
     function getRandomIntFrom(max) {
         return Math.floor(Math.random() * (max - 1));
     }
 
+    function findPiecesToGuess(pieces) {
+        return pieces.filter(function (piece) {
+            return piece.toGuess;
+        })
+    }
+
+    function getCurrentNumberOfPieces() {
+        return currentNumberOfPieces;
+
+    }
+
+    function getNumberOfPossibleFalseClicks() {
+        return numberOfPossibleFalseClicks;
+
+    }
+
+    function getDelay() {
+        return delay;
+
+    }
+
+
     return {
         'startGame': startGame,
         'getPieces': getPieces,
-        'currentNumberOfPieces': currentNumberOfPieces,
-        'checkClick':checkClick
+        'getCurrentNumberOfPieces': getCurrentNumberOfPieces,
+        'checkClick': checkClick,
+        'numberOfPiecesToGuess': numberOfPiecesToGuess,
+        'totalNumberOfClicks': totalNumberOfClicks,
+        'getNumberOfPossibleFalseClicks': getNumberOfPossibleFalseClicks,
+        'currentPieces': currentPieces,
+        'findPiecesToGuess': findPiecesToGuess,
+        'getDelay': getDelay
+
+
     }
 })();
