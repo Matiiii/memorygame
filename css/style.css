@@ -1,7 +1,14 @@
-.piece {
+div .piece {
     height: 50px;
     width: 50px;
     margin: 10px;
     background-color: darkkhaki;
-    display:inline-block
+    display:inline-block;
+    transition-duration: 0.5s;
+}
+div .piece:hover {
+    height: 60px;
+    width: 60px;
+    margin: 5px;
+
 }

@@ -12,7 +12,7 @@ var controller = function () {
         });
 
         view.renderPieces(game.getPieces());
-        view.addOnClicksForPieces();
+
 
     },
     startNextLevel = function () {
@@ -24,7 +24,7 @@ var controller = function () {
         });
 
         view.renderPieces(game.getPieces());
-        view.addOnClicksForPieces();
+
     },
     restartLevel = function () {
         var numberOfPiecesInThisLevel = game.currentNumberOfPieces;
@@ -35,16 +35,16 @@ var controller = function () {
         });
 
         view.renderPieces(game.getPieces());
-        view.addOnClicksForPieces();
 
     },
      checkClick = function (id) {
          if(game.checkClick(id) === true){
-
+            return console.log(id.toString()+true);
+         }else{
+             return  console.log(id.toString()+false);
          }
-             ;
-     }
 
+     };
     return {
         'startGame': startGame,
         'startNextLevel': startNextLevel,
