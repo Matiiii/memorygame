@@ -16,8 +16,6 @@ view = (function () {
             }
         },
         resetPieces = function () {
-
-
             var pieces = document.getElementById('pieces');
             while (pieces.firstChild) {
                 pieces.removeChild(pieces.firstChild);
@@ -26,14 +24,20 @@ view = (function () {
         addOnClicksForPieces = function () {
 
             var children = Array.prototype.slice.call(document.getElementById("pieces").children);
-            children.forEach(function() { addEventListener("click", function () {controller.checkClick(this.id);
-            })
+            children.forEach(function () {
+                addEventListener("click", function () {
+                    controller.checkClick(this.id);
+                })
             });
+        },
+        getNumberOfPossibleFalseClicks = function () {
+            return document.getElementById('inputFalseClicks').value;
         }
     return {
         'getInitialNumberOfPieces': getInitialNumberOfPieces,
         'renderPieces': renderPieces,
         'resetPieces': resetPieces,
-        'addOnClicksForPieces': addOnClicksForPieces
+        'addOnClicksForPieces': addOnClicksForPieces,
+        'getNumberOfPossibleFalseClicks': getNumberOfPossibleFalseClicks
     }
 })();

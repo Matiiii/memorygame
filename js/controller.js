@@ -1,12 +1,13 @@
 var controller = function () {
     var startGame = function () {
         var initialNumberOfPieces = view.getInitialNumberOfPieces(),
-        pieces;
+        numberOfPossibleFalseClicks = view.getNumberOfPossibleFalseClicks();
 
         view.resetPieces();
 
         game.startGame({
-            numberOfPieces: initialNumberOfPieces
+            numberOfPieces: initialNumberOfPieces,
+            numberOfPossibleFalseClicks: numberOfPossibleFalseClicks
 
         });
 

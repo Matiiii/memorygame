@@ -41,7 +41,7 @@ describe('Game', function () {
         expect(piecesToGuess.length).toBe(2);
     });
 
-    function findPiecesToGuess(pieces) {
+    function findPiecesToGuess(pieces)        {
         return pieces.filter(function (piece) {
             return piece.toGuess;
         })

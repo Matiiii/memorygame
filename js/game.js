@@ -1,3 +1,9 @@
+Piece = function (number){
+    this.toGuess = false;
+    this.pieceNumber = number;
+};
+
+
 var game = (function () {
     var config,
         totalNumberOfClicks = 0,
@@ -8,13 +14,10 @@ var game = (function () {
         numberOfPiecesToGuess,
         currentPieces,
         level,
-        Piece = function (number){
-        this.toGuess = false;
-        this.pieceNumber = number;
-        },
         startGame = function (config) {
             if (config && config.numberOfPieces) {
                 currentNumberOfPieces = config.numberOfPieces;
+                numberOfPossibleFalseClicks = config.numberOfPossibleFalseClicks;
             } else {
                 currentNumberOfPieces = initialNumberOfPieces;
             }
@@ -33,7 +36,7 @@ var game = (function () {
             while (numbToEnd > 0) {
                 var indexNumber = getRandomIntFrom(currentNumberOfPieces);
 
-                if (pieces[indexNumber].toGuess == false) { //   pieces[indexNumber].toGuess === undefined
+                if (pieces[indexNumber].toGuess === false) { //   pieces[indexNumber].toGuess === undefined
                     pieces[indexNumber].toGuess = true;
                     numbToEnd--;
                 }
@@ -45,7 +48,7 @@ var game = (function () {
 
     function checkClick(index) {
         totalNumberOfClicks++;
-        if (typeof currentPieces[index].toGuess === true) {
+        if (currentPieces[index].toGuess == true) {
             currentPieces[index].toGuess = false;
             numberOfPiecesToGuess--;
             return true;
@@ -59,8 +62,6 @@ var game = (function () {
             level++;
             controller.startNextLevel();
         }
-
-
     }
 
     function getNumberOfPiecesToGuess() {
@@ -69,7 +70,7 @@ var game = (function () {
     }
 
     function getRandomIntFrom(max) {
-        return Math.floor(Math.random() * max - 1);
+        return Math.floor(Math.random() * (max - 1));
     }
 
     return {

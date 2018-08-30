@@ -13,14 +13,16 @@
     </style>
 </head>
 <body>
-<h1>Hello world!</h1>
+<h1>Memory Game!</h1>
 
 
     <span>
-<form oninput="wynik.value=inputPieces.value">
+<form oninput="wynik.value=inputPieces.value, wynik2.value=inputFalseClicks.value">
 
-    <p>Whatever 4-50 :  <output name="wynik" for="pieces "></output></p>
+    <p>Set pieces 4-50 :  <output name="wynik" for="pieces "></output></p>
     <input type="range" id="inputPieces" name="whatever" value="4" min="4" max="50">
+    <p>Set possible false 0-1 :  <output name="wynik2" for="pieces "></output></p>
+    <input type="range" id="inputFalseClicks" name="whatever" value="0" min="0" max="10">
 
 </form>
 
