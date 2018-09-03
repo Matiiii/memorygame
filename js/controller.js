@@ -29,7 +29,7 @@ var controller = function () {
             view.addNonClickStyleToDocument(5);
             view.viewMessage('Yeah! Next Level!');
             setTimeout(function () {
-                var numberOfPiecesInThisLevel = parseInt(game.getCurrentNumberOfPieces(), 10) + 2,
+                var numberOfPiecesInThisLevel = parseInt(game.getCurrentNumberOfPieces(), 10) + 1,
                     numberOfPossibleFalseClicks = game.getNumberOfPossibleFalseClicks(),
                     delay = game.getDelay(),
                     pieces;
