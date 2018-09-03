@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js\view.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">js/</a> view.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">7.14% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>5/70</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">3.85% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/26</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">7.14% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>5/70</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
+&nbsp;
+var view = (function () {
+&nbsp;
+&nbsp;
+    var getInitialNumberOfPieces = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            return document.getElementById('inputPieces').value;</span>
+        },
+        renderPieces = <span class="fstat-no" title="function not covered" >function (pieces) {</span>
+<span class="cstat-no" title="statement not covered" >            var i;</span>
+<span class="cstat-no" title="statement not covered" >            for (i = 0; i &lt; pieces.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                var piece = document.createElement("div");</span>
+<span class="cstat-no" title="statement not covered" >                piece.addEventListener('click', controller.checkClick);</span>
+<span class="cstat-no" title="statement not covered" >                piece.classList.add('piece');</span>
+<span class="cstat-no" title="statement not covered" >                piece.id = i;</span>
+<span class="cstat-no" title="statement not covered" >                document.getElementById('pieces').appendChild(piece);</span>
+            }
+        },
+        resetPieces = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            var pieces = document.getElementById('pieces');</span>
+<span class="cstat-no" title="statement not covered" >            while (pieces.firstChild) {</span>
+<span class="cstat-no" title="statement not covered" >                pieces.removeChild(pieces.firstChild);</span>
+            }
+        },
+        getNumberOfPossibleFalseClicks = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            return document.getElementById('inputFalseClicks').value;</span>
+        },
+        getDelay = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            return document.getElementById('inputDelay').value * 10;</span>
+        },
+        setColorPieceBlue = <span class="fstat-no" title="function not covered" >function (id) {</span>
+<span class="cstat-no" title="statement not covered" >            var piece = document.getElementById(id.toString());</span>
+<span class="cstat-no" title="statement not covered" >            piece.setAttribute('class', 'piece blue');</span>
+        },
+        setColorPieceRed = <span class="fstat-no" title="function not covered" >function (id) {</span>
+<span class="cstat-no" title="statement not covered" >            var piece = document.getElementById(id);</span>
+<span class="cstat-no" title="statement not covered" >            piece.setAttribute('class', 'piece red');</span>
+        },
+        setColorPieceGreen = <span class="fstat-no" title="function not covered" >function (id) {</span>
+<span class="cstat-no" title="statement not covered" >            var piece = document.getElementById(id);</span>
+<span class="cstat-no" title="statement not covered" >            piece.setAttribute('class', 'piece green');</span>
+        },
+        viewPiecesToGuess = <span class="fstat-no" title="function not covered" >function (delay, pieces) {</span>
+<span class="cstat-no" title="statement not covered" >            viewPiece();</span>
+<span class="cstat-no" title="statement not covered" >            addNonClickStyleToDocument(delay);</span>
+<span class="cstat-no" title="statement not covered" >            setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                hidePieceToGuess()</span>
+            }, parseInt(delay, 10) * 100);
+&nbsp;
+<span class="fstat-no" title="function not covered" >            function viewPiece() {</span>
+<span class="cstat-no" title="statement not covered" >                var i;</span>
+<span class="cstat-no" title="statement not covered" >                for (i = 0; i &lt; pieces.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                    var id = pieces[i].pieceNumber,</span>
+                        piece = document.getElementById(id);
+<span class="cstat-no" title="statement not covered" >                    piece.setAttribute('class', 'piece blue');</span>
+                }
+            }
+&nbsp;
+<span class="fstat-no" title="function not covered" >            function hidePieceToGuess() {</span>
+<span class="cstat-no" title="statement not covered" >                var i;</span>
+<span class="cstat-no" title="statement not covered" >                for (i = 0; i &lt; pieces.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                    var id = pieces[i].pieceNumber,</span>
+                        piece = document.getElementById(id);
+<span class="cstat-no" title="statement not covered" >                    piece.setAttribute('class', 'piece');</span>
+                }
+            }
+        },
+        addNonClickStyleToDocument = <span class="fstat-no" title="function not covered" >function (delay) {</span>
+<span class="cstat-no" title="statement not covered" >            var style = document.getElementById('styleBox');</span>
+<span class="cstat-no" title="statement not covered" >            style.innerHTML = "* {pointer-events: none;}";</span>
+<span class="cstat-no" title="statement not covered" >            setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                style.innerHTML = ""</span>
+            }, parseInt(delay) * 100);
+        },
+        setColorPiece = <span class="fstat-no" title="function not covered" >function (color, id) {</span>
+<span class="cstat-no" title="statement not covered" >            if (color == 'green') {</span>
+<span class="cstat-no" title="statement not covered" >                setColorPieceGreen(id);</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                viewMessage('Bad!');</span>
+<span class="cstat-no" title="statement not covered" >                setColorPieceRed(id);</span>
+            }
+        },
+        viewTotalClicks = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            var total = document.getElementById('total');</span>
+<span class="cstat-no" title="statement not covered" >            total.innerHTML = controller.getTotalNumberOfClicks().toString();</span>
+        },
+        viewAccuracy = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            var accuracyContainer = document.getElementById('accuracy'),</span>
+                falseAccuracy = Math.round(parseInt(controller.getNumberOfFalseClicks())/parseInt(controller.getTotalNumberOfClicks()) * 10000) / 100,
+                accuracy = 100 - falseAccuracy;
+<span class="cstat-no" title="statement not covered" >                if(isNaN(accuracy)){</span>
+<span class="cstat-no" title="statement not covered" >                    accuracy = 0;</span>
+                }
+<span class="cstat-no" title="statement not covered" >            accuracyContainer.innerHTML = accuracy.toString() + '%';</span>
+        },
+        viewFalseClicks = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            var falseClickContainer = document.getElementById('falseClick');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            falseClickContainer.innerHTML = controller.getNumberOfFalseClicks().toString();</span>
+        },
+        viewPossibleFalseClicks = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            var viewPossibleFalseClicksContainer = document.getElementById('posFalse'),</span>
+            numberOfPossibleFalseClicks = controller.getNumberOfPossibleFalseClicks();
+<span class="cstat-no" title="statement not covered" >            if(numberOfPossibleFalseClicks &lt; 0){</span>
+<span class="cstat-no" title="statement not covered" >                numberOfPossibleFalseClicks = 'game over';</span>
+            }
+<span class="cstat-no" title="statement not covered" >            viewPossibleFalseClicksContainer.innerHTML = numberOfPossibleFalseClicks.toString();</span>
+        },
+        viewNumberPiecesToGuess = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            var toGuess = document.getElementById('toGuess');</span>
+<span class="cstat-no" title="statement not covered" >            toGuess.innerHTML = controller.getNumberOfPiecesToGuess().toString();</span>
+        },
+        updateStats = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            viewTotalClicks();</span>
+<span class="cstat-no" title="statement not covered" >            viewAccuracy();</span>
+<span class="cstat-no" title="statement not covered" >            viewFalseClicks();</span>
+<span class="cstat-no" title="statement not covered" >            viewPossibleFalseClicks();</span>
+<span class="cstat-no" title="statement not covered" >            viewNumberPiecesToGuess();</span>
+        },
+        viewMessage = <span class="fstat-no" title="function not covered" >function (message) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var titleContener = document.getElementById('game-title');</span>
+<span class="cstat-no" title="statement not covered" >        titleContener.innerHTML = message;</span>
+<span class="cstat-no" title="statement not covered" >        setTimeout( <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            titleContener.innerHTML = 'Memory Game!';</span>
+        }, 1500);
+&nbsp;
+        },
+        viewGameOver = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            var piecesContainer = document.getElementById('pieces');</span>
+<span class="cstat-no" title="statement not covered" >            piecesContainer.innerHTML = '&lt;p class = "gameOver"&gt;Game Over!! &lt;br&gt;' +</span>
+                ' &lt;a class="gameOver-button btn btn-blue" onclick="controller.startGame()"&gt;Try Again!&lt;/a&gt;&lt;/p&gt;';
+        },500);
+        };
+&nbsp;
+&nbsp;
+    return {
+        'getInitialNumberOfPieces': getInitialNumberOfPieces,
+        'renderPieces': renderPieces,
+        'resetPieces': resetPieces,
+        'getNumberOfPossibleFalseClicks': getNumberOfPossibleFalseClicks,
+        'setColorPieceBlue': setColorPieceBlue,
+        'setColorPieceRed': setColorPieceRed,
+        'setColorPieceGreen': setColorPieceGreen,
+        'getDelay': getDelay,
+        'viewPiecesToGuess': viewPiecesToGuess,
+        'addNonClickStyleToDocument': addNonClickStyleToDocument,
+        'setColorPiece': setColorPiece,
+        'updateStats': updateStats,
+        'viewMessage': viewMessage,
+        'viewGameOver': viewGameOver
+    }
+})();</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 03 2018 20:20:44 GMT+0200 (GMT+02:00)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

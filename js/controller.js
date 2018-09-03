@@ -1,85 +1,107 @@
+'use strict'
+
 var controller = function () {
     var startGame = function () {
-            var initialNumberOfPieces = view.getInitialNumberOfPieces(),
-                numberOfPossibleFalseClicks = view.getNumberOfPossibleFalseClicks(),
-                delay = view.getDelay(),
-                pieces;
+            view.addNonClickStyleToDocument(5);
+            setTimeout(function () {
+                var initialNumberOfPieces = parseInt(view.getInitialNumberOfPieces()),
+                    numberOfPossibleFalseClicks = view.getNumberOfPossibleFalseClicks(),
+                    delay = view.getDelay(),
+                    pieces;
 
+                game.clearGame();
+                view.resetPieces();
+                view.updateStats();
+                view.viewMessage('Start Game!');
+                game.startGame({
+                    numberOfPieces: initialNumberOfPieces,
+                    numberOfPossibleFalseClicks: numberOfPossibleFalseClicks,
+                    delay: delay
 
-            view.resetPieces();
-            console.log('Start Game! ................................................');
-            game.startGame({
-                numberOfPieces: initialNumberOfPieces,
-                numberOfPossibleFalseClicks: numberOfPossibleFalseClicks,
-                delay: delay
-
-            });
-            pieces = game.getPieces();
-            view.renderPieces(pieces);
-            view.viewPiecesToGuess(delay, game.findPiecesToGuess(pieces));
-
-
+                });
+                pieces = game.getPieces();
+                view.renderPieces(pieces);
+                view.updateStats();
+                view.viewPiecesToGuess(delay, game.findPiecesToGuess(pieces));
+            }, 500);
         },
         startNextLevel = function () {
-            var numberOfPiecesInThisLevel = parseInt(game.getCurrentNumberOfPieces(),10)+1,
-                numberOfPossibleFalseClicks = game.getNumberOfPossibleFalseClicks(),
-                delay = game.getDelay(),
-                pieces;
+            view.addNonClickStyleToDocument(5);
+            view.viewMessage('Yeah! Next Level!');
+            setTimeout(function () {
+                var numberOfPiecesInThisLevel = parseInt(game.getCurrentNumberOfPieces(), 10) + 2,
+                    numberOfPossibleFalseClicks = game.getNumberOfPossibleFalseClicks(),
+                    delay = game.getDelay(),
+                    pieces;
 
-            view.resetPieces();
-            console.log('New Level! ................................................');
-            game.startGame({
-                numberOfPieces: numberOfPiecesInThisLevel,
-                numberOfPossibleFalseClicks: numberOfPossibleFalseClicks,
-                delay: delay
-            });
+                view.resetPieces();
+                game.startGame({
+                    numberOfPieces: numberOfPiecesInThisLevel,
+                    numberOfPossibleFalseClicks: numberOfPossibleFalseClicks,
+                    delay: delay
+                });
 
-            pieces = game.getPieces();
-            view.renderPieces(pieces);
-            view.viewPiecesToGuess(delay, game.findPiecesToGuess(pieces));
-
-
+                pieces = game.getPieces();
+                view.renderPieces(pieces);
+                view.updateStats();
+                view.viewPiecesToGuess(delay, game.findPiecesToGuess(pieces));
+            }, 500);
         },
-        resetView = function(){
-        view.resetPieces();
-        },
-
         restartLevel = function () {
-            var numberOfPiecesInThisLevel = game.getCurrentNumberOfPieces(),
-                delay = game.getDelay(),
-            pieces;
+            view.addNonClickStyleToDocument(5);
 
-            view.resetPieces();
+            setTimeout(function () {
+                var numberOfPiecesInThisLevel = game.getCurrentNumberOfPieces(),
+                    delay = game.getDelay(),
+                    pieces;
 
-            game.startGame({
-                numberOfPieces: numberOfPiecesInThisLevel
-            });
-
-            pieces = game.getPieces();
-            view.renderPieces(pieces);
-            view.viewPiecesToGuess(delay, game.findPiecesToGuess(pieces));
-
+                view.resetPieces();
+                game.startGame({
+                    numberOfPieces: numberOfPiecesInThisLevel
+                });
+                pieces = game.getPieces();
+                view.renderPieces(pieces);
+                view.updateStats();
+                view.viewPiecesToGuess(delay, game.findPiecesToGuess(pieces));
+            }, 500);
         },
-        checkClick = function (id) {
-            if (game.checkClick(id) === true) {
+        checkClick = function () {
+            var id = event.target.id;
+            var result = game.checkClick(id);
+            if (result === 'red' || result === 'green') {
+                view.setColorPiece(result, id);
+            } else if (result === 'startNextLevel') {
                 view.setColorPieceGreen(id);
-            } else {
-                view.setColorPieceRed(id)
+                startNextLevel();
+            } else if (result === 'gameOver') {
+                view.viewMessage('Game Over!');
+                view.setColorPieceRed(id);
+                view.viewGameOver();
             }
-
+            view.updateStats();
         },
-        disableClicks = function () {
-        var delay = view.getDelay();
-        view.addNonClickStyleToDocument(delay);
-
+        getTotalNumberOfClicks = function () {
+            return game.getTotalNumberOfClicks();
+        },
+        getNumberOfFalseClicks = function () {
+            return game.getNumberOfFalseClicks();
+        },
+        getNumberOfPossibleFalseClicks = function () {
+            return game.getNumberOfPossibleFalseClicks();
+        },
+        getNumberOfPiecesToGuess = function () {
+            return game.getNumberOfPiecesToGuess();
         };
+
     return {
         'startGame': startGame,
         'startNextLevel': startNextLevel,
         'restartLevel': restartLevel,
         'checkClick': checkClick,
-        'resetView': resetView,
-        'gameOver':restartLevel,
-        'disableClicks':disableClicks
+        'gameOver': restartLevel,
+        'getTotalNumberOfClicks': getTotalNumberOfClicks,
+        'getNumberOfFalseClicks': getNumberOfFalseClicks,
+        'getNumberOfPossibleFalseClicks': getNumberOfPossibleFalseClicks,
+        'getNumberOfPiecesToGuess': getNumberOfPiecesToGuess
     }
 }();

@@ -2,39 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Memory Game</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/extstyle.css">
+
 
 </head>
 <body>
-<style id="styleBox">
-</style>
-<h1>Memory Game!</h1>
 
-
-    <span>
-<form oninput="wynik.value=inputPieces.value, wynik2.value=inputFalseClicks.value, wynik3.value=inputDelay.value">
-
-    <p>Set pieces 4-50 :  <output name="wynik" for="pieces "></output></p>
-    <input type="range" id="inputPieces" name="whatever" value="4" min="4" max="50">
-    <p>Set possible false 0-10 :  <output name="wynik2" for="pieces "></output></p>
-    <input type="range" id="inputFalseClicks" name="whatever" value="0" min="0" max="10">
-    <p>Set delay 0-1 :  <output name="wynik3" for="pieces "></output></p>
-    <input type="range" id="inputDelay" name="wtf" value="0.5" step="0.1" min="0.5" max="3.0">
-
-</form>
-
-<button onclick="controller.startGame()">Start</button>
-        <button onclick="controller.resetView()">ResetView</button>
-        <button onclick="controller.disableClicks()">disable Clicks</button>
+    <style id="styleBox">
+    </style>
+<div id="box">
+    <div>
+        <span>
+            <img id="img-1"
+             src="http://www.sproutecreative.com/uploads/1/0/0/5/10054645/creativebrain-sproutecreative_orig.png">
         </span>
-    <span>
-        <div class="result" id="pieces"></div>
-    </span>
+        <p id="game-title">Memory Game!</p>
+    </div>
+    <div id="content">
+        <span id="settings">
+            <form>
+
+                <p>SET PIECES  :
+                <div class="range-slider">
+                    <input id="inputPieces" class="range-slider__range" type="range" value="4" min="4" max="49">
+                    <span class="range-slider__value">0</span>
+                </div>
+                <p>SET NUMBER OF LIVES :  <div class="range-slider">
+                    <input id="inputFalseClicks" class="range-slider__range" type="range" value="0" min="0" max="10">
+                    <span class="range-slider__value">0</span>
+                </div>
+                <p>SET DELAY :  <div class="range-slider">
+                    <input id="inputDelay" class="range-slider__range" type="range" value="0.5" min="0.5" max="3.0" step="0.1">
+                    <span class="range-slider__value">0</span>
+                </div>
+            </form>
+
+            <div id="button-container">
+                <a class="btn btn-blue" onclick="controller.startGame()">Start</a>
+                <a class="btn btn-blue" onclick="controller.restartLevel()">Highlights</a>
+            </div>
+            <div id="stats">
+                <p class="stats">Total clicks: <b id="total"></b></p>
+                <p class="stats">Pieces to guess: <b id="toGuess"></b></p>
+                <p class="stats">Possible false clicks: <b id="posFalse"></b></p>
+                <p class="stats">False clicks: <b id="falseClick"></b></p>
+                <p class="stats">Accuracy : <b id="accuracy"></b></p>
+            </div>
+        </span>
+
+        <span id="game">
+            <div class="result" id="pieces"></div>
+        </span>
+    </div>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+<script src="extjs/rangeSlider.js"></script>
+
 
 <script src="js/game.js"></script>
 <script src="js/view.js"></script>
 <script src="js/controller.js"></script>
+
 </body>
 </html>
